@@ -21,6 +21,6 @@ public interface CarService {
     Boolean deleteCar(Long id);
 
     // tìm kiếm theo tên và brand + phân trang + sắp sếp
-    Page<Car> searchCarByNameAndBrandContains(String name, String brand, Integer page,
-            Integer pageSize, String sortType);
+    Page<Car> searchCarByBrandContains(String brand, Integer page, Integer pageSize,
+            String sortType);
 }

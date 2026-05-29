@@ -8,5 +8,5 @@ import com.example.hackathon_29_05_2026_012.model.entity.Car;
 
 @Repository
 public interface CarRepo extends JpaRepository<Car, Long> {
-    Page<Car> searchCarByNameAndBrandContains(String name, String brand, Pageable pageable);
+    Page<Car> searchCarByBrandContains(String brand, Pageable pageable);
 }

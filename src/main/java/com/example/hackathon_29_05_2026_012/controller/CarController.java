@@ -69,15 +69,14 @@ public class CarController {
     // tìm theo tên và brand + phân trang
     @GetMapping("/search")
     public ResponseEntity<ApiDataRespon<Page<Car>>> searchCarContains(
-            @RequestParam(name = "name", defaultValue = "") String name,
             @RequestParam(name = "brand", defaultValue = "") String brand,
             @RequestParam(name = "page", defaultValue = "0") Integer page,
             @RequestParam(name = "sortType", defaultValue = "asc") String sortType
 
     ) {
         return new ResponseEntity<>(new ApiDataRespon<>(true, "tim kiem car thanh cong",
-                service.searchCarByNameAndBrandContains(name, brand, page, pageSize, sortType),
-                HttpStatus.OK), HttpStatus.OK);
+                service.searchCarByBrandContains(brand, page, pageSize, sortType), HttpStatus.OK),
+                HttpStatus.OK);
     }
 
 }

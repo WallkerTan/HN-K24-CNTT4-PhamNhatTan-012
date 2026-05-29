@@ -58,21 +58,16 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Page<Car> searchCarByNameAndBrandContains(String name, String brand, Integer page,
-            Integer pageSize, String sortType) {
+    public Page<Car> searchCarByBrandContains(String brand, Integer page, Integer pageSize,
+            String sortType) {
 
         Sort sort = null;
         Sort.Direction direction =
                 sortType.equalsIgnoreCase("asc") ? Direction.ASC : Direction.DESC;
-        if (name == null && brand == null) {
-            sort = Sort.by(direction, "brand");
-        } else if (brand == null) {
-            sort = Sort.by(direction, "name");
-        } else {
-            sort = Sort.by(direction, "brand");
-        }
+
+        sort = Sort.by(direction, "brand");
         Pageable pageable = PageRequest.of(page, pageSize, sort);
-        return repo.searchCarByNameAndBrandContains(name, brand, pageable);
+        return repo.searchCarByBrandContains(brand, pageable);
     }
 
     private Car toEntity(CarDto carDto) {
